@@ -12,6 +12,7 @@ async function main() {
             where: {id: RarityTypes.COMMON},
             update: {},
             create: {
+                id: RarityTypes.COMMON,
                 name: 'Common'
             }
         }),
@@ -19,6 +20,7 @@ async function main() {
             where: {id: RarityTypes.UNCOMMON},
             update: {},
             create: {
+                id: RarityTypes.UNCOMMON,
                 name: 'Uncommon'
             }
         }),
@@ -26,6 +28,7 @@ async function main() {
             where: {id: RarityTypes.RARE},
             update: {},
             create: {
+                id: RarityTypes.RARE,
                 name: 'Rare'
             }
         })
@@ -36,92 +39,92 @@ async function main() {
         prisma.type.upsert({
             where: {id: CardTypes.FIRE},
             update: {},
-            create: {name: 'Fire'}
+            create: {id: CardTypes.FIRE, name: 'Fire'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.WATER},
             update: {},
-            create: {name: 'Water'}
+            create: {id: CardTypes.WATER, name: 'Water'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.NORMAL},
             update: {},
-            create: {name: 'Normal'}
+            create: {id: CardTypes.NORMAL, name: 'Normal'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.ELECTRIC},
             update: {},
-            create: {name: 'Electric'}
+            create: {id: CardTypes.ELECTRIC, name: 'Electric'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.GRASS},
             update: {},
-            create: {name: 'Grass'}
+            create: {id: CardTypes.GRASS, name: 'Grass'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.ICE},
             update: {},
-            create: {name: 'Ice'}
+            create: {id: CardTypes.ICE, name: 'Ice'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.FIGHTING},
             update: {},
-            create: {name: 'Fighting'}
+            create: {id: CardTypes.FIGHTING, name: 'Fighting'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.POISON},
             update: {},
-            create: {name: 'Poison'}
+            create: {id: CardTypes.POISON, name: 'Poison'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.GROUND},
             update: {},
-            create: {name: 'Ground'}
+            create: {id: CardTypes.GROUND, name: 'Ground'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.FLYING},
             update: {},
-            create: {name: 'Flying'}
+            create: {id: CardTypes.FLYING, name: 'Flying'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.PSYCHIC},
             update: {},
-            create: {name: 'Psychic'}
+            create: {id: CardTypes.PSYCHIC, name: 'Psychic'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.BUG},
             update: {},
-            create: {name: 'Bug'}
+            create: {id: CardTypes.BUG, name: 'Bug'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.ROCK},
             update: {},
-            create: {name: 'Rock'}
+            create: {id: CardTypes.ROCK, name: 'Rock'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.GHOST},
             update: {},
-            create: {name: 'Ghost'}
+            create: {id: CardTypes.GHOST, name: 'Ghost'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.DRAGON},
             update: {},
-            create: {name: 'Dragon'}
+            create: {id: CardTypes.DRAGON, name: 'Dragon'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.DARK},
             update: {},
-            create: {name: 'Dark'}
+            create: {id: CardTypes.DARK, name: 'Dark'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.STEEL},
             update: {},
-            create: {name: 'Steel'}
+            create: {id: CardTypes.STEEL, name: 'Steel'}
         }),
         prisma.type.upsert({
             where: {id: CardTypes.FAIRY},
             update: {},
-            create: {name: 'Fairy'}
+            create: {id: CardTypes.FAIRY, name: 'Fairy'}
         })
     ])
 
