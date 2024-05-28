@@ -1,6 +1,6 @@
 import {PrismaClient} from '@prisma/client'
-import {type as CardTypes} from '../constants/type'
-import {rarity as RarityTypes} from '../constants/rarity'
+import {type as CardTypes} from '../src/constants/type'
+import {rarity as RarityTypes} from '../src/constants/rarity'
 
 const prisma = new PrismaClient()
 

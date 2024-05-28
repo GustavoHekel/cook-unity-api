@@ -1,7 +1,7 @@
 import joi from 'joi'
 import {Request, Response, NextFunction} from "express";
-import {type as CardTypes} from "../../../../constants/type";
-import {rarity as RarityTypes} from "../../../../constants/rarity"
+import {type as CardTypes} from "../../../constants/type";
+import {rarity as RarityTypes} from "../../../constants/rarity"
 
 const getTypes = () => {
     return Object.values(CardTypes).filter(val => typeof val === 'number');
