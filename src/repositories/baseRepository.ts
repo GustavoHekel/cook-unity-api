@@ -12,7 +12,7 @@ export abstract class BaseRepository {
     private model: Uncapitalize<Prisma.ModelName>
     private prisma = new PrismaClient({})
 
-    constructor(model: Uncapitalize<Prisma.ModelName>) {
+    protected constructor(model: Uncapitalize<Prisma.ModelName>) {
         this.model = model
     }
 

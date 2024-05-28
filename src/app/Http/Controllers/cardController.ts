@@ -2,13 +2,19 @@ import {Request, Response} from "express";
 import {Card} from '@prisma/client'
 import {Pokemon} from "../../../classes/Pokemon";
 import {CardRepository} from "../../../repositories/cardRepository";
+import {TypeRepository} from "../../../repositories/typeRepository";
+import {RarityRepository} from "../../../repositories/rarityRepository";
 
 export class CardController {
 
-    repository
+    cardRepository
+    typeRepository
+    rarityRepository
 
     constructor() {
-        this.repository = new CardRepository('card')
+        this.cardRepository = new CardRepository()
+        this.typeRepository = new TypeRepository()
+        this.rarityRepository = new RarityRepository()
     }
 
     index = async (req: Request, res: Response) => {
@@ -23,7 +29,7 @@ export class CardController {
             filters['rarityId'] = Number(req.query.rarity)
         }
 
-        const cards = await this.repository.all({
+        const cards = await this.cardRepository.all({
             where: {...filters},
             include: {
                 type: true,
@@ -31,14 +37,21 @@ export class CardController {
             }
         })
 
+        const types = await this.typeRepository.all()
+        const rarities = await this.rarityRepository.all()
+
         res.send({
-            data: cards
+            data: {
+                cards,
+                types,
+                rarities
+            }
         })
     }
 
     get = async (req: Request, res: Response) => {
 
-        const card = await this.repository.find({
+        const card = await this.cardRepository.find({
             where: {id: Number(req.params.id)},
             include: {
                 type: true,
@@ -53,7 +66,7 @@ export class CardController {
 
     create = async (req: Request, res: Response) => {
 
-        const card = await this.repository.create({
+        const card = await this.cardRepository.create({
             name: req.body.name,
             attackName: req.body.attackName,
             attackValue: req.body.attackValue,
@@ -73,7 +86,7 @@ export class CardController {
     }
 
     update = async (req: Request, res: Response) => {
-        const card = await this.repository.update(Number(req.params.id), {
+        const card = await this.cardRepository.update(Number(req.params.id), {
             name: req.body.name,
             attackName: req.body.attackName,
             attackValue: req.body.attackValue,
@@ -93,14 +106,14 @@ export class CardController {
     }
 
     destroy = async (req: Request, res: Response) => {
-        await this.repository.destroy(Number(req.params.id))
+        await this.cardRepository.destroy(Number(req.params.id))
 
         res.status(204).send({})
     }
 
     stats = async (req: Request, res: Response) => {
 
-        const cards = await this.repository.all()
+        const cards = await this.cardRepository.all()
         const selectedCard = cards.find((card: Card) => String(card.id) === req.params.id)
 
         const weaknesses = cards.filter((card: Card) => card.typeId === selectedCard.weaknessTypeId)
@@ -118,11 +131,11 @@ export class CardController {
 
     fight = async (req: Request, res: Response) => {
 
-        const attacker = await this.repository.find({
+        const attacker = await this.cardRepository.find({
             where: {id: Number(req.params.attackerId)},
         })
 
-        const defender = await this.repository.find({
+        const defender = await this.cardRepository.find({
             where: {id: Number(req.params.defenderId)},
         })
 

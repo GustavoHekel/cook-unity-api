@@ -1,7 +1,7 @@
 import {BaseRepository} from "./baseRepository";
 
-export class CardRepository extends BaseRepository {
+export class TypeRepository extends BaseRepository {
     constructor() {
-        super('card');
+        super('type');
     }
 }

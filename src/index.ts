@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors())
 
 app.get("/", (req: Request, res: Response) => {
-    res.send("Express + TypeScript Server");
+    res.send("Cook Unity API");
 });
 
 app.listen(port, () => {
