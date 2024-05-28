@@ -21,3 +21,5 @@ app.listen(port, () => {
 });
 
 app.use('/api/cards', cardsRouter)
+
+export default app
